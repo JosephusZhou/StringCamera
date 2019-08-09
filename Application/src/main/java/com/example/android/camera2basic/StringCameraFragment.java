@@ -133,7 +133,6 @@ public class StringCameraFragment extends Fragment
 
     private View rootView;
     private TextView textView;
-    private ImageView imageView;
 
     /**
      * ID of the current {@link CameraDevice}.
@@ -214,7 +213,7 @@ public class StringCameraFragment extends Fragment
         public void onImageAvailable(ImageReader reader) {
             final String s = Utils.yuv2string(reader);
             if(s != null) {
-                imageView.post(new Runnable() {
+                textView.post(new Runnable() {
                     @Override
                     public void run() {
                         textView.setText(s);
@@ -399,7 +398,6 @@ public class StringCameraFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_string_camera, container, false);
-        imageView = rootView.findViewById(R.id.image);
         textView = rootView.findViewById(R.id.text);
         return rootView;
     }
